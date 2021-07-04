@@ -4,6 +4,7 @@ import './Search.css';
 
 const Search = props => {
   const searchInput = useRef('');
+  //Pushing the user input values to the parent component.
   const getSearchTerm = () => {
     props.searchKeyword(searchInput.current.value);
   };

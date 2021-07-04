@@ -8,7 +8,6 @@ const Layout = () => {
 
   useEffect(() => {
     const fetchPets = async () => {
-      //This goes off
       const pets = await axios.get(
         'https://60d075407de0b20017108b89.mockapi.io/api/v1/animals'
       );

@@ -1,0 +1,25 @@
+.filter__buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.filter__buttons > button {
+  margin: 15px;
+  /* width: 150px; */
+  height: 30px;
+  color: #000;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 5px 10px #888888;
+}
+
+@media all and (max-width: 600px) {
+  .filter__buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 20px;
+  }
+}
