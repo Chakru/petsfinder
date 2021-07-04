@@ -1,0 +1,15 @@
+.layout h1 {
+  margin-top: 40px;
+  margin-left: 34%;
+}
+
+.container {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+@media all and (max-width: 600px) {
+  .container {
+  }
+}

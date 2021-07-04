@@ -1,0 +1,32 @@
+.petlist {
+  background-color: #f3f2ef;
+  padding: 15px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  width: 30%;
+  height: 50px;
+  box-shadow: 5px 10px #888888;
+}
+
+.petlist__header {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.petlist__info {
+  margin-left: 10px;
+}
+
+.petlist__info > h2 {
+  font-size: 15px;
+}
+
+.petlist__info > p {
+  color: whitesmoke;
+  font-weight: bolder;
+  font-size: 12px;
+}
+
+.petlist__body {
+  padding-left: 10px;
+}
