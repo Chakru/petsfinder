@@ -1,6 +1,7 @@
-.layout h1 {
+.layout > h1 {
   margin-top: 40px;
-  margin-left: 34%;
+  margin-left: 42%;
+  padding-bottom: 10px;
 }
 
 .container {
@@ -8,4 +9,11 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+@media all and (max-width: 600px) {
+  .layout > h1 {
+    margin-left: 30%;
+    width: auto;
+  }
 }

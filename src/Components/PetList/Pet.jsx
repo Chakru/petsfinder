@@ -3,12 +3,17 @@ import ReactPaginate from 'react-paginate';
 import PetList from './PetList/PetList';
 import Search from '../SearchBox/Search';
 import './Pet.css';
+import Filter from '../Filter/Filter';
+
+//Global declaration for displaying the pets per page
+const petsPerPage = 10;
 
 const Pet = ({ pets }) => {
   const [pageNumber, setPageNumber] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const petsPerPage = 10;
+  const [filter, setFilter] = useState({ sort: null });
+
   const pageCount = Math.ceil(pets.length / petsPerPage);
 
   // No Pets Available
@@ -19,6 +24,7 @@ const Pet = ({ pets }) => {
     </div>
   );
 
+  // Fetched user input from the child component to find the pet.
   const searchHandler = searchTerm => {
     setSearchTerm(searchTerm);
     if (searchTerm !== '') {
@@ -38,6 +44,8 @@ const Pet = ({ pets }) => {
   const getListToDisplay = () => {
     const pageVisited = pageNumber * petsPerPage;
     let displayList = [];
+
+    //Check if the searched name is available
     if (searchTerm.length === 0) {
       displayList = pets;
     } else {
@@ -48,6 +56,21 @@ const Pet = ({ pets }) => {
           .includes(searchTerm.toLowerCase());
       });
     }
+
+    // Sort the list based on the age
+    if (filter.sort !== null) {
+      if (filter.sort === 'asc') {
+        displayList = displayList.sort((a, b) =>
+          a.bornAt < b.bornAt ? 1 : -1
+        );
+      } else if (filter.sort === 'dsc') {
+        displayList = displayList.sort((a, b) =>
+          a.bornAt > b.bornAt ? 1 : -1
+        );
+      }
+    }
+
+    // Check if no pet is available
     if (displayList.length === 0) {
       return NA;
     }
@@ -63,14 +86,22 @@ const Pet = ({ pets }) => {
       });
   };
 
+  // Change page on user click
   const changePageHandler = ({ selected }) => {
     setPageNumber(selected);
+  };
+
+  // fetching sort selection from child component
+  const onSort = sortTerm => {
+    setFilter({ sort: sortTerm });
   };
 
   return (
     <>
       {/* search Box */}
       <Search term={searchTerm} searchKeyword={searchHandler} />
+      {/* Filter Buttons */}
+      <Filter onSort={onSort} />
       {/* Pets List Displayed */}
       {getListToDisplay()}
       {/* Page Pagination  */}
