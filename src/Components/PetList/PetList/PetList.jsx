@@ -1,7 +1,7 @@
 import React from 'react';
 import './PetList.css';
 
-const PetList = ({ id, name, months }) => {
+const PetList = ({ name, months }) => {
   return (
     <div className="petlist">
       <div className="petlist__header">

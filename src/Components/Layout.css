@@ -9,7 +9,3 @@
   align-items: center;
   flex-direction: column;
 }
-@media all and (max-width: 600px) {
-  .container {
-  }
-}
